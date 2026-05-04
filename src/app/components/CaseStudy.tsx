@@ -1702,7 +1702,7 @@ function PrototypeEmbed({ src }: { src: string }) {
           observer.disconnect();
         }
       },
-      { rootMargin: "800px" }
+      { rootMargin: "1200px" }
     );
     observer.observe(el);
     return () => observer.disconnect();

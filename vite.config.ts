@@ -29,9 +29,9 @@ export default defineConfig({
   },
   assetsInclude: ['**/*.svg', '**/*.csv'],
   build: {
-    // Inline assets smaller than 4kb as base64 (reduces requests for small icons)
-    assetsInlineLimit: 4096,
-    // Split vendor chunks for better caching
+    // Inline assets smaller than 8kb as base64 — covers most small SVG icons
+    assetsInlineLimit: 8192,
+    // Split vendor chunks for better long-term caching
     rollupOptions: {
       output: {
         manualChunks: {
@@ -39,13 +39,16 @@ export default defineConfig({
           'vendor-motion': ['motion'],
           'vendor-ui': ['lucide-react', 'clsx', 'tailwind-merge'],
         },
+        // Use content hash in filenames for aggressive browser caching
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
       },
     },
-    // Enable minification
     minify: 'esbuild',
-    // Generate source maps only for production debugging (set false to skip)
     sourcemap: false,
-    // Warn on chunks > 500kb
     chunkSizeWarningLimit: 500,
+    // Compress assets
+    reportCompressedSize: true,
   },
 })

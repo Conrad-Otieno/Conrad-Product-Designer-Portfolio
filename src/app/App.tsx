@@ -7,9 +7,9 @@ import { CaseStudy } from "./components/CaseStudy";
 import { Contact } from "./components/Contact";
 import { About } from "./components/About";
 import heroPortrait from "@/imports/hero-portrait.jpeg";
-import dfsaCard from "@/imports/DFSA_Card.webp";
-import dqCard from "@/imports/DQ_Card.webp";
-import kfCard from "@/imports/KF_Card.webp";
+import dfsaCard from "@/imports/DFSA_Card.svg";
+import dqCard from "@/imports/DQ_Card.svg";
+import kfCard from "@/imports/KF_Card.svg";
 
 const MO = "Montserrat, Inter, sans-serif";
 
@@ -307,7 +307,7 @@ export default function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <CaseStudy onBack={() => setView("home")} projectId={activeProject} onNavigate={(id) => { setActiveProject(id); window.scrollTo(0, 0); }} />
+            <CaseStudy onBack={() => setView("home")} projectId={activeProject} onNavigate={(id) => { handleProjectClick(id); }} />
           </motion.div>
         )}
 
@@ -437,6 +437,8 @@ export default function App() {
                     src={heroPortrait}
                     alt="Conrad, Product Designer — portrait photo"
                     className="w-full h-full object-cover object-top"
+                    decoding="async"
+                    fetchPriority="high"
                     width={320}
                     height={320}
                   />
@@ -472,7 +474,7 @@ export default function App() {
 
             {/* Project grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" role="list">
-              {projects.map((p) => (
+              {projects.map((p, cardIndex) => (
                 <article
                   key={p.title}
                   role="listitem"
@@ -487,8 +489,9 @@ export default function App() {
                         src={p.image}
                         alt={`${p.title} — project preview`}
                         className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                        loading="lazy"
+                        loading={cardIndex === 0 ? "eager" : "lazy"}
                         decoding="async"
+                        fetchPriority={cardIndex === 0 ? "high" : "auto"}
                       />
                     ) : (
                       <ImageWithFallback
@@ -497,7 +500,9 @@ export default function App() {
                         className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
                         width={600}
                         height={450}
-                        loading="lazy"
+                        loading={cardIndex === 0 ? "eager" : "lazy"}
+                        decoding="async"
+                        fetchPriority={cardIndex === 0 ? "high" : "auto"}
                       />
                     )}
                     {/* Lock badge */}

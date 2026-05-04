@@ -113,7 +113,7 @@ export function About({ onBack }: Props) {
                 <ImageWithFallback
                   src={heroPortrait}
                   alt="Conrad Otieno, Product Designer"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top" decoding="async"
                   width={600}
                   height={500}
                 />
