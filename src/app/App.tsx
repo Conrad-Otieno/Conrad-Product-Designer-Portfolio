@@ -7,9 +7,9 @@ import { CaseStudy } from "./components/CaseStudy";
 import { Contact } from "./components/Contact";
 import { About } from "./components/About";
 import heroPortrait from "@/imports/hero-portrait.jpeg";
-import dfsaCard from "@/imports/DFSA_Card.svg";
-import dqCard from "@/imports/DQ_Card.svg";
-import kfCard from "@/imports/KF_Card.svg";
+import dfsaCard from "@/imports/DFSA_Card.webp";
+import dqCard from "@/imports/DQ_Card.webp";
+import kfCard from "@/imports/KF_Card.webp";
 
 const MO = "Montserrat, Inter, sans-serif";
 
