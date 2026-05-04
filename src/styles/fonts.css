@@ -1,0 +1,5 @@
+/* Fonts are loaded via <link> in index.html for optimal performance (no render-blocking @import) */
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}

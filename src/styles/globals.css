@@ -1,0 +1,68 @@
+
+
+/* Contact form field */
+.field-input {
+  width: 100%;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  font-size: 0.875rem;
+  color: #171717;
+  transition: border-color 0.15s ease;
+}
+
+.field-input::placeholder {
+  color: #a3a3a3;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #d97706;
+  box-shadow: 0 0 0 1px #d97706;
+}
+
+/* Contact form line input (legacy) */
+.line-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid #e5e5e5;
+  padding: 0.625rem 0;
+  font-size: 0.9rem;
+  color: #171717;
+  transition: border-color 0.15s ease;
+}
+
+.line-input::placeholder {
+  color: #a3a3a3;
+}
+
+.line-input:focus {
+  outline: none;
+  border-bottom-color: #d97706;
+}
+
+/* Underline-only input — bottom border, no background, no rounded corners */
+.underline-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 0;
+  padding: 0.75rem 0;
+  font-size: 0.875rem;
+  color: #171717;
+  transition: border-color 0.15s ease;
+  box-shadow: none;
+}
+
+.underline-input::placeholder {
+  color: #a3a3a3;
+}
+
+.underline-input:focus {
+  outline: none;
+  border-bottom-color: #f59e0b;
+  box-shadow: none;
+}
