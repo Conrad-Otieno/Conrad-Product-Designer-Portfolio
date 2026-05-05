@@ -20,7 +20,7 @@ export function Logo({ className = "" }: { className?: string }) {
       <rect x="1" y="1" width="18" height="18" rx="3" fill="currentColor" />
 
       {/* Front square — transparent fill + stroke, sits bottom-right */}
-      <rect x="7" y="7" width="18" height="18" rx="3" fill="transparent" stroke="#f59e0b" strokeWidth="1.5" />
+      <rect x="7" y="7" width="18" height="18" rx="3" fill="transparent" stroke="currentColor" strokeWidth="1.5" />
 
       {/* Overlap block — fills the intersection to complete the C shape */}
       <rect x="7" y="7" width="8" height="8" fill="currentColor" />
