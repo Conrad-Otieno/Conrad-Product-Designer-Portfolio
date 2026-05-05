@@ -1,5 +1,10 @@
-<svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="1" y="1" width="18" height="18" rx="3" fill="#d97706"/>
-  <rect x="7" y="7" width="18" height="18" rx="3" fill="white" stroke="#d97706" stroke-width="1.5"/>
-  <rect x="7" y="7" width="8" height="8" fill="#d97706"/>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Amber background -->
+  <rect width="32" height="32" rx="6" fill="#d97706"/>
+  
+  <!-- Stylized C that properly fits -->
+  <path d="M22 6C18.8 6 16 7.1 13.9 9.1C11.8 11.2 10.7 13.8 10.7 16.5C10.7 19.2 11.8 21.8 13.9 23.9C16 26 18.8 27 22 27" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+  
+  <!-- Inner highlight for depth -->
+  <path d="M22 9.5C19.5 9.5 17.5 10.3 16 11.8C14.5 13.3 13.7 15.1 13.7 16.5C13.7 17.9 14.5 19.7 16 21.2C17.5 22.7 19.5 23.5 22 23.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
 </svg>

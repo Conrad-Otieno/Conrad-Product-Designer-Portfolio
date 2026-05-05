@@ -3,6 +3,7 @@ import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { useState, useRef, useEffect } from "react";
 import { ArrowUpRight, Linkedin, Lock, X, ArrowUp } from "lucide-react";
 import { Logo } from "./components/Logo";
+import logoImg from "@/imports/logo.png";
 import { CaseStudy } from "./components/CaseStudy";
 import { Contact } from "./components/Contact";
 import { About } from "./components/About";
@@ -220,11 +221,11 @@ export default function App() {
       {/* ── Nav ── */}
       <header className="sticky top-0 z-40 backdrop-blur-md bg-[#1a1a1a]/95 border-b border-white/5">
         <nav
-          className="max-w-7xl mx-auto px-5 sm:px-10 lg:px-[100px] h-16 flex items-center justify-between"
+          className="px-5 sm:px-10 lg:px-[100px] h-16 flex items-center justify-between"
           aria-label="Main navigation"
         >
           <button onClick={() => setView("home")} aria-label="Conrad — back to home">
-            <Logo className="h-10 w-auto text-white" />
+            <img src={logoImg} alt="Conrad" className="h-20 w-auto" />
           </button>
 
           <div className="flex items-center gap-3">
@@ -544,8 +545,8 @@ export default function App() {
 
       {/* ── Footer ── */}
       <footer className="bg-[#1a1a1a] text-neutral-400" aria-label="Site footer">
-        <div className="max-w-7xl mx-auto px-5 sm:px-10 lg:px-[100px] py-8 sm:py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          <Logo className="h-8 w-auto text-white" />
+        <div className="px-5 sm:px-10 lg:px-[100px] py-8 sm:py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <img src={logoImg} alt="Conrad" className="h-20 w-auto" />
           <nav className="flex flex-wrap items-center gap-6 text-sm" aria-label="Footer navigation">
             <button onClick={() => { setView("home"); setTimeout(() => { document.getElementById("work")?.scrollIntoView({ behavior: "smooth" }); }, 100); }} className="hover:text-amber-500 transition-colors duration-200 tracking-wide font-normal leading-none">Works</button>
             <button onClick={() => setView("about")} className="hover:text-amber-500 transition-colors duration-200 tracking-wide font-normal leading-none">About</button>
