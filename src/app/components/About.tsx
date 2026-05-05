@@ -27,7 +27,7 @@ const experience = [
   {
     role: "UI/UX Designer",
     company: "Freelance",
-    period: "April 2021 – May 2023",
+    period: "April 2022 – May 2024",
     description: "Designed responsive interfaces across web and mobile. Translated business requirements into user flows, wireframes, and high-fidelity Figma prototypes.",
   },
 ];
