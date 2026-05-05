@@ -27,7 +27,7 @@ const experience = [
   {
     role: "UI/UX Designer",
     company: "Freelance",
-    period: "June 2023 – May 2024",
+    period: "April 2021 – May 2023",
     description: "Designed responsive interfaces across web and mobile. Translated business requirements into user flows, wireframes, and high-fidelity Figma prototypes.",
   },
 ];
@@ -142,10 +142,9 @@ export function About({ onBack }: Props) {
                 <p className="text-neutral-600 leading-relaxed mb-6" style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)", fontFamily: MO, fontWeight: 400 }}>
                   With 4+ years of experience, I've designed enterprise-grade digital platforms across fintech regulation, SME ecosystems, digital transformation, and EdTech. I combine design thinking with front-end development fluency to deliver accessible, high-quality interfaces that bridge user needs and business goals.
                 </p>
-                <div className="grid grid-cols-3 gap-4 border-t border-neutral-100 pt-6">
+                <div className="grid grid-cols-2 gap-4 border-t border-neutral-100 pt-6">
                   {[
                     { n: "4+", label: "Years experience" },
-                    { n: "5", label: "Products shipped" },
                     { n: "3", label: "Industries" },
                   ].map((s) => (
                     <div key={s.label}>

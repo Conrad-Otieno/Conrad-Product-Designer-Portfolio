@@ -17,7 +17,7 @@ const taglines = {
   anyone:
     "Crafting digital experiences where joy meets utility, designing products that feel effortless, work for everyone, and solve real problems with care.",
   recruiters:
-    "Product designer with 5+ years building scalable design systems, leading cross-functional teams, and delivering measurable user impact.",
+    "Product designer with 4+ years building scalable design systems, leading cross-functional teams, and delivering measurable user impact.",
   designers:
     "Obsessed with design systems, accessibility, and the craft of interaction design. Always happy to talk process, tooling, and hard design problems.",
   pms:
