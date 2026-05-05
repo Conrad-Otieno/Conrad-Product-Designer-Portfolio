@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { Logo } from "./Logo";
 import { useState, useEffect, useRef } from "react";
 import dfsaSwimlaneDiagram from "@/imports/dfsa_swimlane_diagram.png";
 import ebppStage02 from "@/imports/EBPP - Stage 02.svg";
@@ -432,33 +431,21 @@ export function CaseStudy({ onBack, projectId, onNavigate }: Props) {
               </p>
               <ol className="space-y-4">
                 {[
-                  { lead: "Outdated, Cluttered Visual Design:", body: "The site felt heavy and dated, misaligned with DQ's forward-thinking, futurist identity.", img: dqProblem1 },
-                  { lead: "Unclear Value Proposition:", body: "Visitors couldn't understand what DQ does within the first few seconds. No clear hook, no clarity.", img: dqProblem2 },
-                  { lead: "Jargon-Heavy Services:", body: "The services section was overwhelming and filled with internal terminology that meant nothing to a prospective client.", img: dqProblem3 },
-                  { lead: "Poor Positioning:", body: "DQ had evolved into a product-oriented organisation but the site still positioned it as a generic service consultancy, completely underselling their IP.", img: dqProblem4 },
+                  { lead: "Outdated, Cluttered Visual Design:", body: "The site felt heavy and dated, misaligned with DQ's forward-thinking, futurist identity." },
+                  { lead: "Unclear Value Proposition:", body: "Visitors couldn't understand what DQ does within the first few seconds. No clear hook, no clarity." },
+                  { lead: "Jargon-Heavy Services:", body: "The services section was overwhelming and filled with internal terminology that meant nothing to a prospective client." },
+                  { lead: "Poor Positioning:", body: "DQ had evolved into a product-oriented organisation but the site still positioned it as a generic service consultancy, completely underselling their IP." },
                 ].map((item, i) => (
-                  <li
-                    key={i}
-                    className={`rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 sm:gap-10 ${i % 2 === 1 ? "sm:flex-row-reverse" : ""}`}
-                  >
-                    {/* Text */}
-                    <div className="flex-1 flex items-start gap-4">
-                      <span
-                        className="flex-shrink-0 text-neutral-400 font-medium mt-0.5 w-5 text-right"
-                        style={{ fontFamily: MO, fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)" }}
-                      >
-                        {i + 1}.
-                      </span>
-                      <p className="text-neutral-600 leading-relaxed" style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)", fontFamily: MO, fontWeight: 400 }}>
-                        <span style={{ fontWeight: 600, color: "#171717" }}>{item.lead}</span>{" "}{item.body}
-                      </p>
-                    </div>
-                    {/* Image */}
-                    {item.img && (
-                      <div className="w-full sm:w-96 lg:w-[440px] flex-shrink-0">
-                        <img src={item.img} alt={item.lead} className="w-full h-auto block rounded-xl" />
-                      </div>
-                    )}
+                  <li key={i} className="flex items-start gap-4">
+                    <span
+                      className="flex-shrink-0 text-neutral-400 font-medium mt-0.5 w-5 text-right"
+                      style={{ fontFamily: MO, fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)" }}
+                    >
+                      {i + 1}.
+                    </span>
+                    <p className="text-neutral-600 leading-relaxed" style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)", fontFamily: MO, fontWeight: 400 }}>
+                      <span style={{ fontWeight: 600, color: "#171717" }}>{item.lead}</span>{" "}{item.body}
+                    </p>
                   </li>
                 ))}
               </ol>
@@ -503,33 +490,49 @@ export function CaseStudy({ onBack, projectId, onNavigate }: Props) {
                       n: "1",
                       lead: "Modernise the Visual Language:",
                       body: "We decided to move to a minimalist, futurist aesthetic, and a purposeful visual system that reflected DQ's culture and forward looking identity. I developed the design system and published it on ZeroHeight.",
+                      img: dqProblem1,
                     },
                     {
                       n: "2",
                       lead: "Clarify the Value Proposition:",
                       body: "Every page needed to answer within 5 seconds: what DQ does, who it's for, and why it's different. We restructured the homepage around a clear hero statement, sector entry points, and proof points.",
+                      img: dqProblem2,
                     },
                     {
                       n: "3",
                       lead: "Simplify the Services Architecture:",
                       body: "We replaced jargon-heavy service descriptions with outcome-led language, grouped offerings by sector, and introduced a consistent service card pattern that made scanning and self-selection effortless.",
+                      img: dqProblem3,
                     },
                     {
                       n: "4",
                       lead: "Surface the DQ DNA:",
                       body: "We created dedicated space for DQ's philosophy, the DCO vision, and their 15-year framework heritage, turning invisible differentiators into visible proof of expertise.",
+                      img: dqProblem4,
                     },
                   ].map((item) => (
-                    <div key={item.n} className="flex items-start gap-5">
-                      <span
-                        className="flex-shrink-0 text-neutral-400 font-medium mt-0.5 w-5 text-right"
-                        style={{ fontFamily: MO, fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)" }}
-                      >
-                        {item.n}.
-                      </span>
-                      <p className="text-neutral-600 leading-relaxed" style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)", fontFamily: MO, fontWeight: 400 }}>
-                        <span style={{ fontWeight: 600, color: "#171717" }}>{item.lead}</span>{" "}{item.body}
-                      </p>
+                    <div
+                      key={item.n}
+                      className={`flex flex-col sm:flex-row items-center gap-6 sm:gap-10 ${parseInt(item.n) % 2 === 0 ? "sm:flex-row-reverse" : ""}`}
+                    >
+                      {/* Text */}
+                      <div className="flex-1 flex items-start gap-5">
+                        <span
+                          className="flex-shrink-0 text-neutral-400 font-medium mt-0.5 w-5 text-right"
+                          style={{ fontFamily: MO, fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)" }}
+                        >
+                          {item.n}.
+                        </span>
+                        <p className="text-neutral-600 leading-relaxed" style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)", fontFamily: MO, fontWeight: 400 }}>
+                          <span style={{ fontWeight: 600, color: "#171717" }}>{item.lead}</span>{" "}{item.body}
+                        </p>
+                      </div>
+                      {/* Image */}
+                      {item.img && (
+                        <div className="w-full sm:w-96 lg:w-[440px] flex-shrink-0">
+                          <img src={item.img} alt={item.lead} className="w-full h-auto block rounded-xl" />
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -635,8 +638,8 @@ export function CaseStudy({ onBack, projectId, onNavigate }: Props) {
               {/* Badge + rule */}
               <div className="flex items-center gap-4 mb-10">
                 <span
-                  className="bg-[#c8f135] text-neutral-900 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs tracking-widest uppercase flex-shrink-0"
-                  style={{ fontFamily: MO, fontWeight: 600 }}
+                  className="bg-amber-400 text-neutral-900 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs tracking-widest uppercase flex-shrink-0"
+                  style={{ fontFamily: MO, fontWeight: 500 }}
                 >
                   Success Metrics
                 </span>
@@ -661,7 +664,7 @@ export function CaseStudy({ onBack, projectId, onNavigate }: Props) {
                     "Bounce rate dropped by 31%, reflecting stronger relevance and clearer messaging from the first touchpoint.",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <span className="mt-[0.45em] w-2 h-2 rounded-full flex-shrink-0 bg-[#c8f135]" />
+                      <span className="mt-[0.45em] w-2 h-2 rounded-full flex-shrink-0 bg-amber-400" />
                       <span className="text-neutral-600 leading-relaxed" style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)", fontFamily: MO, fontWeight: 400 }}>
                         {item}
                       </span>
@@ -680,7 +683,7 @@ export function CaseStudy({ onBack, projectId, onNavigate }: Props) {
                     "AI accelerates, but judgment ships - Using AI to prototype faster was only valuable because the team had the design literacy to critique and refine the output. Speed without taste produces noise.",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <span className="mt-[0.45em] w-2 h-2 rounded-full flex-shrink-0 bg-[#c8f135]" />
+                      <span className="mt-[0.45em] w-2 h-2 rounded-full flex-shrink-0 bg-amber-400" />
                       <span className="text-neutral-600 leading-relaxed" style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.05rem)", fontFamily: MO, fontWeight: 400 }}>
                         {item}
                       </span>
