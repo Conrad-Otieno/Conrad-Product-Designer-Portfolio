@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
-import { useState, useRef, useEffect } from "react";
-import { ArrowUpRight, Linkedin, Lock, X, ArrowUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowUpRight, Linkedin, ArrowUp } from "lucide-react";
 import { Logo } from "./components/Logo";
 import logoImg from "@/imports/logo.png";
 import { CaseStudy } from "./components/CaseStudy";
@@ -35,14 +35,13 @@ const audiences = [
   { key: "engineers", label: "Engineers" },
 ];
 
-const projects: { title: string; category: string; image: string; bg: string; bottomAnchored?: boolean; protected?: boolean }[] = [
+const projects: { title: string; category: string; image: string; bg: string; bottomAnchored?: boolean }[] = [
   {
     title: "Dubai Financial Services Authority SupTech Platform",
     category: "Web App",
     image: dfsaCard,
     bg: "bg-[#e8f5ee]",
     bottomAnchored: true,
-    protected: true,
   },
   {
     title: "DigitalQatalyst Corporate Website Redesign",
@@ -58,118 +57,11 @@ const projects: { title: string; category: string; image: string; bg: string; bo
   },
 ];
 
-// ── Password gate ─────────────────────────────────────────────────
-const DFSA_PASSWORD = "Protected9193";
-
-function PasswordModal({
-  onSuccess,
-  onClose,
-}: {
-  onSuccess: () => void;
-  onClose: () => void;
-}) {
-  const [value, setValue] = useState("");
-  const [error, setError] = useState(false);
-  const [shake, setShake] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (value === DFSA_PASSWORD) {
-      onSuccess();
-    } else {
-      setError(true);
-      setShake(true);
-      setValue("");
-      setTimeout(() => setShake(false), 500);
-    }
-  }
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "rgba(0,0,0,0.55)", backdropFilter: "blur(6px)" }}
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-    >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 16 }}
-        animate={shake ? { x: [0, -10, 10, -8, 8, -4, 4, 0] } : { opacity: 1, scale: 1, y: 0, x: 0 }}
-        transition={shake ? { duration: 0.45, ease: "easeInOut" } : { duration: 0.25, ease: [0.25, 0, 0, 1] }}
-        className="bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 sm:p-10 flex flex-col items-center text-center"
-        style={{ fontFamily: MO }}
-      >
-        {/* Lock icon */}
-        <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mb-6">
-          <Lock className="w-7 h-7 text-neutral-500" strokeWidth={1.5} />
-        </div>
-
-        <h2
-          className="text-neutral-900 mb-2 tracking-tight"
-          style={{ fontSize: "clamp(1.4rem, 3vw, 1.75rem)", fontWeight: 700, fontFamily: MO }}
-        >
-          Protected Case Study
-        </h2>
-        <p
-          className="text-neutral-500 mb-8 leading-relaxed"
-          style={{ fontSize: "clamp(0.9rem, 1.6vw, 1rem)", fontFamily: MO, fontWeight: 400 }}
-        >
-          This case study is password protected. Please enter the password to view.
-        </p>
-
-        <form onSubmit={handleSubmit} className="w-full space-y-3">
-          <input
-            ref={inputRef}
-            type="password"
-            value={value}
-            onChange={(e) => { setValue(e.target.value); setError(false); }}
-            placeholder="Enter password"
-            className={`w-full px-5 py-4 rounded-2xl border-2 text-neutral-900 placeholder-neutral-400 outline-none transition-colors text-base ${
-              error
-                ? "border-red-400 bg-red-50"
-                : "border-neutral-200 focus:border-amber-500 bg-white"
-            }`}
-            style={{ fontFamily: MO, fontWeight: 400 }}
-            aria-label="Case study password"
-            aria-invalid={error}
-          />
-          {error && (
-            <p className="text-red-500 text-sm text-left pl-1" style={{ fontFamily: MO }}>
-              Incorrect password. Please try again.
-            </p>
-          )}
-          <button
-            type="submit"
-            className="w-full bg-amber-600 hover:bg-amber-700 text-white py-4 rounded-2xl text-base font-semibold transition-colors"
-            style={{ fontFamily: MO }}
-          >
-            Access Case Study
-          </button>
-        </form>
-
-        <button
-          onClick={onClose}
-          className="mt-6 flex items-center gap-2 text-neutral-400 hover:text-neutral-600 text-sm transition-colors"
-          style={{ fontFamily: MO }}
-        >
-          <X className="w-4 h-4" />
-          Back to home
-        </button>
-      </motion.div>
-    </div>
-  );
-}
-
 export default function App() {
   const [activeAudience, setActiveAudience] = useState("anyone");
   const [menuOpen, setMenuOpen] = useState(false);
   const [view, setView] = useState<"home" | "case" | "contact" | "about">("home");
   const [activeProject, setActiveProject] = useState<string>("dfsa");
-  const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const [pendingProject, setPendingProject] = useState<string | null>(null);
 
   const projectIdMap: Record<string, string> = {
     "Dubai Financial Services Authority SupTech Platform": "dfsa",
@@ -190,29 +82,9 @@ export default function App() {
   }
 
   function handleProjectClick(projectId: string) {
-    if (projectId === "dfsa") {
-      setPendingProject("dfsa");
-      setShowPasswordModal(true);
-    } else {
-      setActiveProject(projectId);
-      setView("case");
-      window.scrollTo(0, 0);
-    }
-  }
-
-  function handlePasswordSuccess() {
-    setShowPasswordModal(false);
-    if (pendingProject) {
-      setActiveProject(pendingProject);
-      setPendingProject(null);
-      setView("case");
-      window.scrollTo(0, 0);
-    }
-  }
-
-  function handlePasswordClose() {
-    setShowPasswordModal(false);
-    setPendingProject(null);
+    setActiveProject(projectId);
+    setView("case");
+    window.scrollTo(0, 0);
   }
 
   return (
@@ -506,16 +378,6 @@ export default function App() {
                         fetchPriority={cardIndex === 0 ? "high" : "auto"}
                       />
                     )}
-                    {/* Lock badge */}
-                    {p.protected && (
-                      <div
-                        className="absolute top-3 right-3 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-neutral-700 px-2.5 py-1.5 rounded-full shadow-sm"
-                        style={{ fontFamily: MO, fontSize: "0.7rem", fontWeight: 500 }}
-                      >
-                        <Lock className="w-3 h-3" strokeWidth={2} />
-                        <span>Protected</span>
-                      </div>
-                    )}
                   </div>
 
                   {/* Card body */}
@@ -573,15 +435,6 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* ── Password modal ── */}
-      <AnimatePresence>
-        {showPasswordModal && (
-          <PasswordModal
-            onSuccess={handlePasswordSuccess}
-            onClose={handlePasswordClose}
-          />
-        )}
-      </AnimatePresence>
     </div>
   );
 }
